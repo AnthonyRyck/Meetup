@@ -232,15 +232,15 @@ namespace ConsoleDemoGraph.Graph
 			});
 			await Arango.Graph.Edge.CreateAsync(DatabaseName, GraphName, AMIS, new
 			{
-				Key = "Alex-Julie",
+				Key = "Alex-Louis",
 				From = UTILISATEUR + "/" + "Alex",
-				To = UTILISATEUR + "/" + "Julie",
+				To = UTILISATEUR + "/" + "Louis",
 				Label = AMIS
 			});
 			await Arango.Graph.Edge.CreateAsync(DatabaseName, GraphName, AMIS, new
 			{
-				Key = "Julie-Alex",
-				From = UTILISATEUR + "/" + "Julie",
+				Key = "Louis-Alex",
+				From = UTILISATEUR + "/" + "Louis",
 				To = UTILISATEUR + "/" + "Alex",
 				Label = AMIS
 			});
@@ -270,6 +270,21 @@ namespace ConsoleDemoGraph.Graph
 				Key = "Clara-Jean",
 				From = UTILISATEUR + "/" + "Clara",
 				To = UTILISATEUR + "/" + "Jean",
+				Label = AMIS
+			});
+
+			await Arango.Graph.Edge.CreateAsync(DatabaseName, GraphName, AMIS, new
+			{
+				Key = "Bernard-Louis",
+				From = UTILISATEUR + "/" + "Bernard",
+				To = UTILISATEUR + "/" + "Louis",
+				Label = AMIS
+			});
+			await Arango.Graph.Edge.CreateAsync(DatabaseName, GraphName, AMIS, new
+			{
+				Key = "Louis-Bernard",
+				From = UTILISATEUR + "/" + "Louis",
+				To = UTILISATEUR + "/" + "Bernard",
 				Label = AMIS
 			});
 		}
@@ -340,8 +355,8 @@ namespace ConsoleDemoGraph.Graph
 
 			await Arango.Graph.Edge.CreateAsync(DatabaseName, GraphName, ETUDIER, new
 			{
-				Key = "Julie-Lycee",
-				From = UTILISATEUR + "/" + "Julie",
+				Key = "Louis-Lycee",
+				From = UTILISATEUR + "/" + "Louis",
 				To = LIEU + "/" + "Lycee",
 				Label = ETUDIER,
 				Quand = "2000-2003"
@@ -372,9 +387,9 @@ namespace ConsoleDemoGraph.Graph
 			Log("Ajout de la relation RECHERCHE");
 			await Arango.Graph.Edge.CreateAsync(DatabaseName, GraphName, RECHERCHE, new
 			{
-				Key = "Marc-Julie",
+				Key = "Marc-Louis",
 				From = UTILISATEUR + "/" + "Marc",
-				To = UTILISATEUR + "/" + "Julie",
+				To = UTILISATEUR + "/" + "Louis",
 				Label = RECHERCHE
 			});
 		}

@@ -1,0 +1,45 @@
+--> Pour trouver les amis des amis en partant
+--> de Marc, et avec une profondeur de 2.
+
+FOR moi IN Utilisateur
+FILTER moi._key == 'Marc'
+LET ownFriends = (FOR friend IN OUTBOUND moi Amis RETURN friend._id)
+LET PROFONDEUR = 2
+FOR v, e, p 
+IN 1..PROFONDEUR
+OUTBOUND moi Amis
+OPTIONS { order : 'bfs', uniqueVertices : 'path' }
+RETURN { QuiEstLamisDeMonAmis : v._key }
+
+===> Retourne Alex (1) et Louis (2).
+
+
+
+--> Pour trouver les amis des amis en partant
+--> de Marc, et avec une profondeur de 3.
+FOR moi IN Utilisateur
+FILTER moi._key == 'Marc'
+LET ownFriends = (FOR friend IN OUTBOUND moi Amis RETURN friend._id)
+LET PROFONDEUR = 3
+FOR v, e, p 
+IN 1..PROFONDEUR
+OUTBOUND moi Amis
+OPTIONS { order : 'bfs', uniqueVertices : 'path' }
+RETURN { QuiEstLamisDeMonAmis : v._key }
+
+===> Retourne Alex (1), Louis (2) et Bernard(3).
+
+
+--> Pour trouver les amis des amis en partant
+--> de Marc, et avec une profondeur de 4.
+FOR moi IN Utilisateur
+FILTER moi._key == 'Marc'
+LET ownFriends = (FOR friend IN OUTBOUND moi Amis RETURN friend._id)
+LET PROFONDEUR = 4
+FOR v, e, p 
+IN 1..PROFONDEUR
+OUTBOUND moi Amis
+OPTIONS { order : 'bfs', uniqueVertices : 'path' }
+RETURN { QuiEstLamisDeMonAmis : v._key }
+
+===> Retourne Alex (1), Louis (2), Bernard(3) et Jean(4).
