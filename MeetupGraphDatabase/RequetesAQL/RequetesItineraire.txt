@@ -1,0 +1,25 @@
+#### Requête chemin le plus court ####
+FOR sysDepart IN SolarSystem
+FILTER sysDepart.SolarSystemName == 'Airaken'
+FOR sysArrive IN SolarSystem
+FILTER sysArrive.SolarSystemName == 'Reisen'
+FOR path IN OUTBOUND K_SHORTEST_PATHS
+sysDepart._id TO sysArrive._id
+GRAPH 'EveGraph'
+LIMIT 1
+RETURN path
+
+#### Requête chemin le plus sécurisé ####
+FOR sysDepart IN SolarSystem
+FILTER sysDepart.SolarSystemName == 'Airaken'
+FOR sysArrive IN SolarSystem
+FILTER sysArrive.SolarSystemName == 'Reisen'
+FOR v,e,p 
+  IN 1..31
+  OUTBOUND sysDepart
+  GRAPH 'EveGraph'
+  OPTIONS { order : 'bfs', uniqueVertices : 'path' }
+FILTER v._id == sysArrive._id
+FILTER p.vertices[*].Securite ALL >= 0.5
+LIMIT 1
+RETURN { Name: p.vertices[*].SolarSystemName, Secu: p.vertices[*].Securite }
