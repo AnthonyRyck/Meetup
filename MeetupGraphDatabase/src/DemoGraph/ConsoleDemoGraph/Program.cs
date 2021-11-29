@@ -11,7 +11,7 @@ namespace ConsoleDemoGraph
 			"######## Début de l'application Démo ########".ToConsoleInfo();
 			"#:> Appuyer sur une touche pour commencer.".ToConsoleInfo();
 			Console.ReadKey();
-
+			
 			string urlArango = "localhost";
 			int port = 8529;
 			string projectName = "MeetupGraph";
@@ -48,6 +48,7 @@ namespace ConsoleDemoGraph
 
 			Console.WriteLine();
 			"######## Fin de l'application Démo ########".ToConsoleInfo();
+			Console.ReadKey();
 		}
 
 		private static void InfoLog(string message)
